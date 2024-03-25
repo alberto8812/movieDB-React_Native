@@ -8,6 +8,13 @@ export interface NowPlayingResponse {
     total_results: number;
 }
 
+export interface PopularMiviesDB {
+    page:          number;
+    results:       Result[];
+    total_pages:   number;
+    total_results: number;
+}
+
 export interface Dates {
     maximum: string;
     minimum: string;
@@ -29,4 +36,6 @@ export interface Result {
     vote_average:      number;
     vote_count:        number;
 }
+
+
 
