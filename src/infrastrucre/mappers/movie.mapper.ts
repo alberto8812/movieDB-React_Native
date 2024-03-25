@@ -10,8 +10,8 @@ export class MovieMapper{
             description:result.overview,
             reliseDate:new Date(result.release_date),
             rating:result.vote_average,
-            poster:`https://image.tmbs.org/t/p/w5004${result.poster_path}`,
-            backdrop:`https://image.tmbs.org/t/p/w5004${result.backdrop_path}`,
+            poster:`https://image.tmdb.org/t/p/w500${result.poster_path}`,
+            backdrop:`https://image.tmdb.org/t/p/w5004${result.backdrop_path}`,
         }
 
     }
