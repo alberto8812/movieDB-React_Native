@@ -3,11 +3,21 @@ import { PopularMiviesDB } from "../../../infrastrucre/interfaces/movie-db.respo
 import { MovieMapper } from "../../../infrastrucre/mappers/movie.mapper";
 import type { Movie } from "../../entities/movie.entity";
 
+interface Options   {
+    page?:number,
+    limit?:number
+}
 
-export const moviesPopularUseCase=async(fetcher:HttpAdapter):Promise<Movie[]>=>{
+
+export const moviesPopularUseCase=async(fetcher:HttpAdapter,options?:Options):Promise<Movie[]>=>{
 
     try {
-        const PupularPlaying= await fetcher.get<PopularMiviesDB>('/popular');
+        const PupularPlaying= await fetcher.get<PopularMiviesDB>('/popular',{
+            params:{
+                page:options?.page ?? 1,
+              
+            }
+        });
         return PupularPlaying.results.map(MovieMapper.fromMovieDBResultToEntity)
         
     } catch (error) {
