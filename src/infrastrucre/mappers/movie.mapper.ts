@@ -1,5 +1,5 @@
-import { Movie } from "../../core/entities";
-import type { Result } from "../interfaces/movie-db.responses";
+import { FullMovie, Movie } from "../../core/entities";
+import type { MovieDetail, Result } from "../interfaces/movie-db.responses";
 
 export class MovieMapper{
     static fromMovieDBResultToEntity(result:Result):Movie{
@@ -14,5 +14,16 @@ export class MovieMapper{
             backdrop:`https://image.tmdb.org/t/p/w5004${result.backdrop_path}`,
         }
 
+    }
+
+    static fromMovieDBToEntity (movie:MovieDetail):FullMovie {
+        return {
+            ... this.fromMovieDBResultToEntity(movie),
+            genres:movie.genres,
+            duration:movie.runtime,
+            budget:movie.budget,
+            originalTitle:movie.original_title,
+            productionCompanies:movie.production_companies
+        }
     }
 }
