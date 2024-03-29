@@ -8,7 +8,6 @@ export const getByIdUsecase = async(fetcher:HttpAdapter,movieId:number):Promise<
   try {
     //fecher
     const fullMovie= await fetcher.get<MovieDetail>(`/${movieId}`)
-   console.log(fullMovie)
     //mapper
     return  MovieMapper.fromMovieDBToEntity(fullMovie)
   } catch (error) {
