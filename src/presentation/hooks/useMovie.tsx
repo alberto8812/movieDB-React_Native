@@ -10,11 +10,11 @@ export const useMovie = (movieId:number) => {
 
         useEffect(() => {
             loadMovie();
-            setIsLoading(true);
+         setIsLoading(true);
         }, [movieId]);
 
         const loadMovie=async()=>{
-          setIsLoading(false);
+          setIsLoading(true);
            const movie=await getByIdUsecase(movieDBFecher,movieId)
            setMovieDetail(movie);
   
