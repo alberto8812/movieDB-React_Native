@@ -4,12 +4,13 @@ import {ScrollView} from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
+import { FulllScreenLoader } from '../../components/loader/FulllScreenLoader';
 
 export const HomeScreen = () => {
   const {top}=useSafeAreaInsets();
   const {isLoading,nowPlaying,topRate,popular,upComming,popularNextPage} = useMovies();
   if(!isLoading){
-    return(<Text>Cargando...</Text>)
+    return(<FulllScreenLoader/>)
   }
   return (
     <ScrollView>
